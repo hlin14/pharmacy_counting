@@ -4,7 +4,7 @@ from data_analyze import PharmacyCounter
 
 
 def preprocess():
-	inputFileName = "../input/itcont.txt"
+	inputFileName = "../input/itcont2.txt"
 	preprocessor = Preprocessor()
 	preprocessed_dic = preprocessor.preprocess(inputFileName)
 	return preprocessed_dic

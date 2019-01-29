@@ -12,14 +12,14 @@ class PharmacyCounter(object):
 		'''
 
 		for drug_name in preprocessed_dic:
-			id_counter = set()
+			unique_counter = set()
 			drug_total_cost = 0
-			for user_id, drug_cost in preprocessed_dic[drug_name]:
-				if user_id not in id_counter:
-					id_counter.add(user_id)
+			for full_name, drug_cost in preprocessed_dic[drug_name]:
+				if full_name not in unique_counter:
+					unique_counter.add(full_name)
 				drug_total_cost += drug_cost
 
-			self.pharmacy_counter_dic[drug_name] = [len(id_counter), drug_total_cost]
+			self.pharmacy_counter_dic[drug_name] = [len(unique_counter), round(drug_total_cost, 2)]
 			# print(len(id_counter))
 			# print(drug_total_cost)
 		#print(self.pharmacy_counter_dic.items())
@@ -43,12 +43,12 @@ class PharmacyCounter(object):
 
 	def sort_by_total_cost(self, pharmacy_counter_dic):
 		sorted_pharmacy_counter_list = sorted(pharmacy_counter_dic.items(), key=lambda item: (-item[1][1], item[0]))
-		print(sorted_pharmacy_counter_list)
+		#print(sorted_pharmacy_counter_list)
 		return sorted_pharmacy_counter_list
 
 
 	def output(self, sorted_pharmacy_counter_list):
-		print("Now save to top_cost_drug.txt")
+		print("Now save to top_cost_drug.txt...")
 		with open("../output/top_cost_drug.txt", "w") as file:##file name??
 			file.write("drug_name,num_prescriber,total_cost\n")
 			for drug_item in sorted_pharmacy_counter_list:
