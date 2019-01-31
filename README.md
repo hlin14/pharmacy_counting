@@ -5,6 +5,22 @@ The purpose is to anaylze the raw pharmacy data from "Centers for Medicare & Med
 
 # Table of contents
 1.[Problem](README.md#problem)
+	1. [Input format]( README.md#Input format )
+	2. [Output format]( README.md#Output format )
+	3. [Challenges]( README.md#Challenges )
+2.[Approach](README.md#Approach)
+	1.[Stage 1: Data validation, clean and preprocess](README.md#Stage 1: Data validation, clean and preprocess)
+		1.[Data validation](README.md#Data validation)
+		2.[Data clean and preprocess](README.md#Data clean and preprocess)
+		3.[Save to dictionary to the next stage](README.md#Save to dictionary to the next stage)
+	2.[Stage 2: data analysis](README.md#Stage 2: data analysis)
+		1.[Identify the number of unique ](README.md#Identify the number of unique )
+		2.[Sort in order](README.md#Sort in descending order based on the total drug cost, if there is a tie, drug name in ascending order)
+3.[Testing](README.md#Testing)
+4.[Performance](README.md#Performance)
+5.[Potential Drawbacks](README.md#Potential Drawbacks)
+6.[Run Instruction](README.md#Run Instruction)
+7.[Acknowledgement](README.md#Acknowledgement)
 
 # Problem
 The problem is to anaylze the raw pharmacy data, and sort the drug cost in in descending order. The code should be clean, modulized and well-tested. The repo structure should be formatted as required.
@@ -47,12 +63,12 @@ For example:<br />
 [drug_name]:[[(prescriber_last_name_1, prescriber_first_name_1), drug_cost_1], [(prescriber_last_name_2, prescriber_first_name_2), drug_cost_2]...]
 `
   
-## stage 2: data analysis
-### identify the number of unique 
+## Stage 2: data analysis
+### Identify the number of unique 
 Given the dictionary from stage 1, just use a unique_counter(set) to identify how many prescriber for this drug.<br />
 Note that the definition of "unique" is (prescriber_last_name, prescriber_first_name) different from others.
 
-### sort in descending order based on the total drug cost, if there is a tie, drug name in ascending order
+### Sort in descending order based on the total drug cost, if there is a tie, drug name in ascending order
 The little trick is to turn "drug_cost" into negative number, so that "drug_cost" and "drug_name" will all be sorted in the same ordering criteria.<br />
 `sorted_pharmacy_counter_list = sorted(pharmacy_counter_dic.items(), key=lambda item: (-item[1][1], item[0]))`
 
@@ -66,10 +82,10 @@ The testing process:
 
 To run this program: `python3 tester.py`
 
-## 1.generate correct data
+## 1.Generate correct data
 Randomly generate correct data format, each person will insert from 1 to 5 times, the drug_name is randomly selected from drug_A from drug_Z, and the cost is selected from 1 to 10 float number with 2 decimals. At the same time, save the correct dictionay for step 4 to validate.
 
-## 2.add the test data that need to test, and shuffle
+## 2.Add the test data that need to test, and shuffle
 Add the invalid data that needs to be tested, see if the program can detect and discard. Test data example:
 1. empty line
 2. empty in the cols
@@ -77,10 +93,10 @@ Add the invalid data that needs to be tested, see if the program can detect and 
 4. invalid drug_cost format
 then shuffle the data, and save to test_input.txt
 
-## 3.run pharmacy_counting.py
+## 3.Run pharmacy_counting.py
 Run the program, this will ouput the test_output.txt
 
-## 4.check the "output dictionary" is equal to the "correct dictionary"
+## 4.Check the "output dictionary" is equal to the "correct dictionary"
 Read the test_output.txt file, and create the dictionary from this output, and check if it is the same as the correct dictionary from step 1. If the test pass will print`Test Pass!`
 	,else will print `Test Fail!`
 
