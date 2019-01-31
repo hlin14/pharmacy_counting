@@ -4,6 +4,7 @@
 The purpose is to anaylze the raw pharmacy data from "Centers for Medicare & Medicaid Services",and it is built by python3.<br />
 
 # Table of contents
+1.[Problem](README.md#problem)
 
 # Problem
 The problem is to anaylze the raw pharmacy data, and sort the drug cost in in descending order. The code should be clean, modulized and well-tested. The repo structure should be formatted as required.
@@ -62,6 +63,8 @@ The testing process:
 2. add the test data that need to test, then shuffle
 3. run pharmacy_counting.py
 4. check the "output dictionary" is equal to the "correct dictionary"
+
+To run this program: `python3 tester.py`
 
 ## 1.generate correct data
 Randomly generate correct data format, each person will insert from 1 to 5 times, the drug_name is randomly selected from drug_A from drug_Z, and the cost is selected from 1 to 10 float number with 2 decimals. At the same time, save the correct dictionay for step 4 to validate.
