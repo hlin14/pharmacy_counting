@@ -74,6 +74,6 @@ class PharmacyCounter(object):
 				drug_name = drug_item[0]
 				num_prescriber = drug_item[1][0]
 				total_cost = drug_item[1][1]
-				file.write(str(drug_name) + "," + str(num_prescriber) + "," + str(total_cost) + "\n")
+				file.write(str(drug_name) + "," + str(num_prescriber) + "," + str(int(total_cost)) + "\n")
 
 		file.close()

@@ -18,9 +18,9 @@ class Preprocessor(object):
 
 	def preprocess(self, input_file_name):
 		'''
-		read, clean and check validation for input data, tranform into dictionary,
+		read, clean and check validation for input data, transform into dictionary,
 
-		[drug_name]:[[(prescriber_last_name_1,prescriber_first_name_1), drug_cost_1], [(prescriber_last_name_2,prescriber_first_name_2), drug_cost_2]...]
+		[drug_name]:[[(prescriber_last_name_1, prescriber_first_name_1), drug_cost_1], [(prescriber_last_name_2, prescriber_first_name_2), drug_cost_2]...]
 
 		@type input_file_name: string
 		@rtype: dictionary
@@ -38,7 +38,7 @@ class Preprocessor(object):
 				else:
 					'''
 					Data validation:
-						1.Each row must have 5 colimns
+						1.Each row must have 5 columns
 						2.All columns must not be empty, including continous spaces
 						3.Drug_cost must be reasonable numeric, can not be 0
 						,otherwise, discard the row
@@ -63,11 +63,8 @@ class Preprocessor(object):
 
 					prescriber_last_name = prescriber_last_name.strip().upper()
 					prescriber_first_name = prescriber_first_name.strip().upper()
-
-					#drup_name: 1.remove leading and ending spaces 2.turn to upper case
 					drug_name = drug_name.strip().upper()
 
-					#drup_cost: 1.all characters must be numeric, and able to convert to float, otherwise, discard this item  2. limit to two decimals
 					try:
 						drug_cost = round(float(drug_cost), 2)
 						if drug_cost == 0:
