@@ -90,7 +90,6 @@ def run_program():
 	res = subprocess.check_output(["python3", "pharmacy_counting.py" ,"../input/test_input.txt", "../output/test_output.txt"])
 
 def check_ouput(correct_dic):
-	pass
 	#collect from output.txt to check with correct_dic
 	output_dic = defaultdict(list)
 	with open("../output/test_output.txt") as csv_file:
